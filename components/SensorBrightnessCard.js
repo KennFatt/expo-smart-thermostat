@@ -2,7 +2,7 @@ import React from "react";
 import { Entypo } from "@expo/vector-icons";
 import { Skeleton, Text } from "native-base";
 
-import SensorCard from "./SensorCard";
+import CardBase from "./CardBase";
 
 /**
  * Component to display the LDR's value.
@@ -11,7 +11,7 @@ import SensorCard from "./SensorCard";
  */
 export default function SensorBrightnessCard({ loading, value }) {
   return (
-    <SensorCard
+    <CardBase
       title="Brightness"
       description="Current room brightness based on its light intensity."
       IconProvider={Entypo}
@@ -24,6 +24,6 @@ export default function SensorBrightnessCard({ loading, value }) {
           fontSize="4xl"
           fontWeight="bold">{`${value}%`}</Text>
       )}
-    </SensorCard>
+    </CardBase>
   );
 }

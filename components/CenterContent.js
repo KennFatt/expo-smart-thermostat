@@ -8,7 +8,7 @@ import { Box, ScrollView } from "native-base";
  * @param {{scrollable: boolean, props: any}}
  */
 export default function CenterContent({ scrollable = true, ...props }) {
-  const ComposedBox = () => (
+  const composedBox = (
     <Box
       mx="auto"
       width="100%"
@@ -22,11 +22,13 @@ export default function CenterContent({ scrollable = true, ...props }) {
 
   return scrollable ? (
     <ScrollView
+      width="100%"
+      height="100%"
       showsVerticalScrollIndicator={false}
       showsHorizontalScrollIndicator={false}>
-      <ComposedBox />
+      {composedBox}
     </ScrollView>
   ) : (
-    <ComposedBox />
+    composedBox
   );
 }

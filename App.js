@@ -2,7 +2,8 @@ import React from "react";
 import { StatusBar } from "expo-status-bar";
 import { Box, extendTheme, NativeBaseProvider } from "native-base";
 
-import ScreenActuators from "./components/ScreenActuators";
+import ScreenActuators from "./screens/ScreenActuators";
+import ScreenSensorValues from "./screens/ScreenSensorValues";
 
 export default function App() {
   const customTheme = extendTheme({

@@ -2,7 +2,7 @@ import React from "react";
 import { FontAwesome5, MaterialCommunityIcons } from "@expo/vector-icons";
 import { Skeleton, Text, HStack } from "native-base";
 
-import SensorCard from "./SensorCard";
+import CardBase from "./CardBase";
 
 /**
  * Component to display the Temperature's value.
@@ -11,7 +11,7 @@ import SensorCard from "./SensorCard";
  */
 export default function SensorTemperatureCard({ loading, value }) {
   return (
-    <SensorCard
+    <CardBase
       title="Temperature"
       description="Current room temperature in Celcius unit."
       IconProvider={FontAwesome5}
@@ -30,6 +30,6 @@ export default function SensorTemperatureCard({ loading, value }) {
           />
         </HStack>
       )}
-    </SensorCard>
+    </CardBase>
   );
 }

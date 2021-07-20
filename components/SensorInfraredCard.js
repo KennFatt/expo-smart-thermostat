@@ -6,7 +6,7 @@ import {
 } from "@expo/vector-icons";
 import { Skeleton, Text, VStack } from "native-base";
 
-import SensorCard from "./SensorCard";
+import CardBase from "./CardBase";
 
 /**
  * Component to display the PIR's value.
@@ -15,7 +15,7 @@ import SensorCard from "./SensorCard";
  */
 export default function SensorInfraredCard({ loading, value }) {
   return (
-    <SensorCard
+    <CardBase
       title="Living Object"
       description="Check if whether there is any living object inside the room."
       IconProvider={FontAwesome5}
@@ -38,6 +38,6 @@ export default function SensorInfraredCard({ loading, value }) {
           </>
         )}
       </VStack>
-    </SensorCard>
+    </CardBase>
   );
 }

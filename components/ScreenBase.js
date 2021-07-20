@@ -12,7 +12,7 @@ export default function ScreenBase({ name, ...props }) {
   return (
     <CenterContent>
       <VStack space={3}>
-        <Heading>{name ?? "Screen"}</Heading>
+        <Heading color="black">{name ?? "Screen"}</Heading>
 
         {props.children}
       </VStack>

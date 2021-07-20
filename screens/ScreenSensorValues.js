@@ -1,17 +1,17 @@
 import React from "react";
 
-import SensorTemperatureCard from "./SensorTemperatureCard";
-import SensorBrightnessCard from "./SensorBrightnessCard";
-import SensorInfraredCard from "./SensorInfraredCard";
-import ScreenBase from "./ScreenBase";
+import SensorTemperatureCard from "../components/SensorTemperatureCard";
+import SensorBrightnessCard from "../components/SensorBrightnessCard";
+import SensorInfraredCard from "../components/SensorInfraredCard";
+import ScreenBase from "../components/ScreenBase";
 
-import { useSensorValues } from "../lib/thinger-api";
+import { useSensorValuesAPI } from "../lib/thinger-api";
 
 /**
  * Screen to show all the sensor values.
  */
-export default function ScreenSensorValues() {
-  const [sensorValues, isLoading] = useSensorValues();
+export default function SensorValuesScreen() {
+  const [sensorValues, isLoading] = useSensorValuesAPI();
 
   return (
     <ScreenBase name="Sensor Values">
