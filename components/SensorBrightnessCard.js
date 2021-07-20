@@ -17,7 +17,16 @@ export default function SensorBrightnessCard({ loading, value }) {
       IconProvider={Entypo}
       iconName="light-up">
       {loading ? (
-        <Skeleton variant="rect" height={12} alignSelf="baseline" mx={20} />
+        <Skeleton
+          variant="rect"
+          height={12}
+          alignSelf="baseline"
+          mx={20}
+          _web={{
+            alignSelf: "center",
+            width: "50%",
+          }}
+        />
       ) : (
         <Text
           color="black"

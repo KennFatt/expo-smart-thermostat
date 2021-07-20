@@ -17,7 +17,16 @@ export default function SensorTemperatureCard({ loading, value }) {
       IconProvider={FontAwesome5}
       iconName="temperature-low">
       {loading ? (
-        <Skeleton variant="rect" height={12} alignSelf="baseline" mx={20} />
+        <Skeleton
+          variant="rect"
+          height={12}
+          alignSelf="baseline"
+          mx={20}
+          _web={{
+            alignSelf: "center",
+            width: "50%",
+          }}
+        />
       ) : (
         <HStack alignItems="center" space={1}>
           <Text color="black" fontSize="4xl" fontWeight="bold">
