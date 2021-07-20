@@ -11,7 +11,7 @@ import CenterContent from "./CenterContent";
 export default function ScreenBase({ name, ...props }) {
   return (
     <CenterContent>
-      <VStack space={3}>
+      <VStack space={{ base: 3, md: 6 }}>
         <Heading color="black">{name ?? "Screen"}</Heading>
 
         {props.children}

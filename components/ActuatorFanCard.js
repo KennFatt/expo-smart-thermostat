@@ -32,7 +32,7 @@ export default function ActuatorFanCard() {
       </VStack>
     </VStack>
   ) : (
-    <VStack space={3}>
+    <VStack space={{ base: 3, md: 4 }}>
       <HStack alignItems="center" justifyContent="space-between">
         <Text>Toggle fan motor</Text>
         <Switch
@@ -160,7 +160,11 @@ export default function ActuatorFanCard() {
       centerContent={false}>
       {content}
 
-      <Button colorScheme="indigo" isDisabled={isLoading} onPress={updater}>
+      <Button
+        colorScheme="indigo"
+        isDisabled={isLoading}
+        onPress={updater}
+        my={{ md: 4 }}>
         UPDATE
       </Button>
     </CardBase>

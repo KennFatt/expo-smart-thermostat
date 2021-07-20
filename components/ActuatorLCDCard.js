@@ -34,7 +34,11 @@ export default function ActuatorLCDCard() {
       centerContent={false}>
       {content}
 
-      <Button colorScheme="indigo" isDisabled={isLoading} onPress={updater}>
+      <Button
+        colorScheme="indigo"
+        isDisabled={isLoading}
+        onPress={updater}
+        my={{ md: 4 }}>
         UPDATE
       </Button>
     </CardBase>

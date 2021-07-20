@@ -30,11 +30,25 @@ export default function CardBase({
         )}
 
         {/* Description */}
-        {description && <Text fontSize="xs">{description}</Text>}
+        {description && (
+          <Text
+            fontSize={{
+              base: "xs",
+              md: "md",
+            }}>
+            {description}
+          </Text>
+        )}
 
         {/* Content */}
         {centerContent ? (
-          <Center my={2}>{props.children}</Center>
+          <Center
+            my={{
+              base: 2,
+              md: 4,
+            }}>
+            {props.children}
+          </Center>
         ) : (
           props.children
         )}

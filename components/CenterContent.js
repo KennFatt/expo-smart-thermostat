@@ -15,6 +15,8 @@ export default function CenterContent({ scrollable = true, ...props }) {
       height="100%"
       maxWidth={{
         base: 328,
+        md: 768,
+        lg: 1024,
       }}>
       {props.children}
     </Box>
