@@ -15,7 +15,7 @@ export default function CardBase({
   ...props
 }) {
   return (
-    <Box bg="gray.100" borderRadius={10} p={2}>
+    <Box bg="gray.100" borderRadius={10} p={{ base: 3, md: 6 }}>
       <VStack space={2}>
         {/* Title */}
         {title && (

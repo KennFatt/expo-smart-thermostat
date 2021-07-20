@@ -29,13 +29,13 @@ export default function SensorTemperatureCard({ loading, value }) {
         />
       ) : (
         <HStack alignItems="center" space={1}>
-          <Text color="black" fontSize="4xl" fontWeight="bold">
+          <Text color="#6366F1" fontSize="4xl" fontWeight="bold">
             {value?.toFixed(2)}
           </Text>
           <MaterialCommunityIcons
             name="temperature-celsius"
             size={36}
-            color="black"
+            color="#6366F1"
           />
         </HStack>
       )}

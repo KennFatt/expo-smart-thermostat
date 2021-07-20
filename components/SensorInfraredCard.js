@@ -28,13 +28,13 @@ export default function SensorInfraredCard({ loading, value }) {
           </>
         ) : value ? (
           <>
-            <Fontisto name="persons" color="black" size={42} />
-            <Text color="black">There is somebody inside the room</Text>
+            <Fontisto name="persons" color="#6366F1" size={42} />
+            <Text color="#6366F1">There is somebody inside the room</Text>
           </>
         ) : (
           <>
-            <MaterialCommunityIcons name="null" color="black" size={48} />
-            <Text color="black">The room is empty</Text>
+            <MaterialCommunityIcons name="null" color="#6366F1" size={48} />
+            <Text color="#6366F1">The room is empty</Text>
           </>
         )}
       </VStack>

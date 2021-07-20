@@ -29,7 +29,7 @@ export default function SensorBrightnessCard({ loading, value }) {
         />
       ) : (
         <Text
-          color="black"
+          color="#6366F1"
           fontSize="4xl"
           fontWeight="bold">{`${value}%`}</Text>
       )}
