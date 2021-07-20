@@ -1,15 +1,22 @@
 import React from "react";
-import { HStack, Skeleton, Switch, Text, VStack, Slider } from "native-base";
+import {
+  HStack,
+  Skeleton,
+  Switch,
+  Text,
+  VStack,
+  Slider,
+  Button,
+} from "native-base";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import CardBase from "./CardBase";
+import { useDeviceFanPropertyAPI } from "../lib/thinger-api";
 
-export default function ActuatorFanCard({ data, dispatcher, loading }) {
-  const onSliderChange = (value) => {
-    dispatcher((prev) => ({ ...prev, motor_off_brightness_precentage: value }));
-  };
+export default function ActuatorFanCard() {
+  const [data, dispatcher, isLoading, updater] = useDeviceFanPropertyAPI();
 
-  const content = loading ? (
+  const content = isLoading ? (
     <VStack space={3}>
       {Array(3)
         .fill(0)
@@ -29,17 +36,76 @@ export default function ActuatorFanCard({ data, dispatcher, loading }) {
       <HStack alignItems="center" justifyContent="space-between">
         <Text>Toggle fan motor</Text>
         <Switch
-          onToggle={() => {}}
+          onToggle={() =>
+            dispatcher((prev) => ({
+              ...prev,
+              motor_active: !prev.motor_active,
+            }))
+          }
           isChecked={data.motor_active}
           colorScheme="indigo"
         />
       </HStack>
 
+      <VStack space={2}>
+        <Text>Desired room temperature: {`${data.desired_temperature}°C`}</Text>
+
+        <Slider
+          alignSelf="center"
+          defaultValue={data.desired_temperature}
+          onChangeEnd={(value) => {
+            dispatcher((prev) => ({
+              ...prev,
+              desired_temperature: value,
+            }));
+          }}
+          minValue={-127}
+          maxValue={127}
+          step={1}
+          colorScheme="indigo">
+          <Slider.Track>
+            <Slider.FilledTrack />
+          </Slider.Track>
+          <Slider.Thumb />
+        </Slider>
+      </VStack>
+
+      <VStack space={2}>
+        <Text>
+          Desired room temperature threshold:{" "}
+          {`${data.desired_temperature_threshold}°C`}
+        </Text>
+
+        <Slider
+          alignSelf="center"
+          defaultValue={data.desired_temperature_threshold}
+          onChangeEnd={(value) => {
+            dispatcher((prev) => ({
+              ...prev,
+              desired_temperature_threshold: value,
+            }));
+          }}
+          minValue={0}
+          maxValue={15}
+          step={1}
+          colorScheme="indigo">
+          <Slider.Track>
+            <Slider.FilledTrack />
+          </Slider.Track>
+          <Slider.Thumb />
+        </Slider>
+      </VStack>
+
       <HStack alignItems="center" justifyContent="space-between">
         <Text>Toggle static mode</Text>
         <Switch
-          onToggle={() => {}}
-          isChecked={data.motor_static_moed}
+          onToggle={() =>
+            dispatcher((prev) => ({
+              ...prev,
+              motor_static_mode: !prev.motor_static_mode,
+            }))
+          }
+          isChecked={data.motor_static_mode}
           colorScheme="indigo"
         />
       </HStack>
@@ -47,7 +113,12 @@ export default function ActuatorFanCard({ data, dispatcher, loading }) {
       <HStack alignItems="center" justifyContent="space-between">
         <Text>Auto turn off on dark</Text>
         <Switch
-          onToggle={() => {}}
+          onToggle={() =>
+            dispatcher((prev) => ({
+              ...prev,
+              motor_off_brightness: !prev.motor_off_brightness,
+            }))
+          }
           isChecked={data.motor_off_brightness}
           colorScheme="indigo"
         />
@@ -62,7 +133,12 @@ export default function ActuatorFanCard({ data, dispatcher, loading }) {
         <Slider
           alignSelf="center"
           defaultValue={data.motor_off_brightness_precentage}
-          onChangeEnd={onSliderChange}
+          onChangeEnd={(value) => {
+            dispatcher((prev) => ({
+              ...prev,
+              motor_off_brightness_precentage: value,
+            }));
+          }}
           minValue={0}
           maxValue={100}
           step={1}
@@ -83,6 +159,10 @@ export default function ActuatorFanCard({ data, dispatcher, loading }) {
       IconProvider={MaterialCommunityIcons}
       centerContent={false}>
       {content}
+
+      <Button colorScheme="indigo" isDisabled={isLoading} onPress={updater}>
+        UPDATE
+      </Button>
     </CardBase>
   );
 }

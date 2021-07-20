@@ -1,15 +1,14 @@
 import React from "react";
-import { HStack, VStack, Skeleton, Switch, Text } from "native-base";
+import { HStack, Skeleton, Switch, Text, Button } from "native-base";
 import { MaterialIcons } from "@expo/vector-icons";
 
+import { useDeviceLCDPropertyAPI } from "../lib/thinger-api";
 import CardBase from "./CardBase";
 
-export default function ActuatorLCDCard({ data, dispatcher, loading }) {
-  const onSwitchToggled = () => {
-    dispatcher((prev) => ({ backlight: !prev.backlight }));
-  };
+export default function ActuatorLCDCard() {
+  const [data, dispatcher, isLoading, updater] = useDeviceLCDPropertyAPI();
 
-  const content = loading ? (
+  const content = isLoading ? (
     <HStack justifyContent="space-between">
       <Skeleton height={7} width={40} />
       <Skeleton height={7} width={10} />
@@ -18,7 +17,9 @@ export default function ActuatorLCDCard({ data, dispatcher, loading }) {
     <HStack alignItems="center" justifyContent="space-between">
       <Text>Toggle LCD Backlight</Text>
       <Switch
-        onToggle={onSwitchToggled}
+        onToggle={() => {
+          dispatcher((prev) => ({ backlight: !prev.backlight }));
+        }}
         isChecked={data.backlight}
         colorScheme="indigo"
       />
@@ -32,6 +33,10 @@ export default function ActuatorLCDCard({ data, dispatcher, loading }) {
       iconName="monitor"
       centerContent={false}>
       {content}
+
+      <Button colorScheme="indigo" isDisabled={isLoading} onPress={updater}>
+        UPDATE
+      </Button>
     </CardBase>
   );
 }
