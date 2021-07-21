@@ -39,7 +39,6 @@ export default function App() {
                   />
                 ),
               }}
-              tab
             />
             <Tab.Screen
               name="Actuators"
