@@ -6,12 +6,13 @@ import SensorInfraredCard from "../components/SensorInfraredCard";
 import ScreenBase from "../components/ScreenBase";
 
 import { useSensorValuesAPI } from "../lib/thinger-api";
+import { Button } from "native-base";
 
 /**
  * Screen to show all the sensor values.
  */
 export default function SensorValuesScreen() {
-  const [sensorValues, isLoading] = useSensorValuesAPI();
+  const [sensorValues, isLoading, refresher] = useSensorValuesAPI();
 
   return (
     <ScreenBase name="Sensor Values">
@@ -29,6 +30,10 @@ export default function SensorValuesScreen() {
         loading={isLoading}
         value={sensorValues?.has_living_object}
       />
+
+      <Button colorScheme="indigo" onPress={refresher} isDisabled={isLoading}>
+        REFRESH
+      </Button>
     </ScreenBase>
   );
 }

@@ -3,10 +3,15 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { StatusBar } from "expo-status-bar";
 import { Box, extendTheme, NativeBaseProvider } from "native-base";
-import { FontAwesome5, MaterialCommunityIcons } from "@expo/vector-icons";
+import {
+  FontAwesome5,
+  MaterialCommunityIcons,
+  Foundation,
+} from "@expo/vector-icons";
 
 import ActuatorsScreen from "./screens/ActuatorsScreen";
 import SensorValuesScreen from "./screens/SensorValuesScreen";
+import StatisticScreen from "./screens/StatisticScreen";
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -40,12 +45,23 @@ export default function App() {
                 ),
               }}
             />
+
             <Tab.Screen
               name="Actuators"
               component={ActuatorsScreen}
               options={{
                 tabBarIcon: ({ color }) => (
                   <MaterialCommunityIcons name="fan" size={20} color={color} />
+                ),
+              }}
+            />
+
+            <Tab.Screen
+              name="Statistic"
+              component={StatisticScreen}
+              options={{
+                tabBarIcon: ({ color }) => (
+                  <Foundation name="graph-bar" size={20} color={color} />
                 ),
               }}
             />

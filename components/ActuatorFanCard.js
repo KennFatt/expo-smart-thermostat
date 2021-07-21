@@ -111,7 +111,7 @@ export default function ActuatorFanCard() {
       </HStack>
 
       <HStack alignItems="center" justifyContent="space-between">
-        <Text>Auto turn off on dark</Text>
+        <Text>Auto turn off when dark</Text>
         <Switch
           onToggle={() =>
             dispatcher((prev) => ({
